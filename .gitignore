@@ -1,0 +1,4 @@
+blog
+__pycache__
+*.db
+*.pyc

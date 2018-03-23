@@ -1,0 +1,69 @@
+{% extends "layout.html" %}
+{% block main %}
+
+    <script type="text/javascript" src="{{ url_for('static', filename='js/script.js') }}"></script>
+
+    <div class="row">
+
+    <div class="col-md-2">
+        <h3>Tags</h3>
+        {% for tag in tags %}
+
+            <p class="m-0"><a href="/tag/{{ tag.name }}">{{ tag.name }}[{{ tag.articles }}]</a></p>
+
+        {% endfor %}
+    </div>
+
+    <div class="col-md-10">
+    <!-- Heading Row -->
+      <div class="row my-4">
+        <div class="col-lg-8">
+          <img class="img-fluid rounded" src="https://www.prezentology.com/wp-content/uploads/2017/10/photo-1-900x400.jpg" alt="">
+        </div>
+        <!-- /.col-lg-8 -->
+        <div class="col-lg-4">
+          <h1>Blog example</h1>
+          <p>This is a template that is great for small businesses. It doesn't have too much fancy flare to it, but it makes a great use of the standard Bootstrap core components. Feel free to use this template for any project you want!<br> Back-end by VII!</p>
+          <a class="btn btn-primary btn-lg" href="/contact">Call to Action!</a>
+        </div>
+        <!-- /.col-md-4 -->
+      </div>
+      <!-- /.row -->
+
+      <!-- Call to Action Well -->
+      <div class="card text-white bg-secondary my-4 text-center">
+        <div class="card-body">
+          <p class="text-white m-0">This call to action card is a great place to showcase some important information or display a clever tagline!</p>
+        </div>
+      </div>
+
+      <!-- Content Row -->
+      <div class="row">
+
+        {% for art in articles %}
+
+            <div class="col-md-6 col-lg-4 mb-6">
+                <div class="card h-100">
+                    <div class="card-body">
+                      <h2 class="card-title">{{ art.title }}</h2>
+                      <img class="card-img-top" src="{{ art.picture }}">
+                      <p class="card-text">{{ art.description }}</p>
+                    </div>
+                    <div class="card-footer">
+                      <a href="/{{ art.id }}" class="btn btn-primary">More Info</a>
+                        {% if session['name'] %}
+                          <a href="/edit/{{ art.id }}" class="btn btn-success">Edit</a>
+                          <a href="/delete/{{ art.id }}" class="btn btn-danger">Delete</a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+
+          {% endfor %}
+
+      </div>
+      <!-- /.row -->
+    </div>
+    </div>
+
+{% endblock %}
