@@ -15,7 +15,9 @@ blog
 
 Получить права админа: site-name:5000/admin
 
-login: admin -//- password: admin
+login: admin
+
+password: admin
 
 
 (Становятся доступны новые кнопки и изменяется шапка сайта под нужды админа.)
