@@ -39,6 +39,8 @@ def get_post(post_num):
 def by_tag(tagname):
     posts = Article.query
     tags = Tag.query.filter_by(name=tagname)
+    if not tags.first():
+        return "404"
     result = []
     for post in posts:
         if tagname in post.tags:
@@ -50,9 +52,10 @@ def by_tag(tagname):
 @app.route('/admin')
 def admin():
     if is_admin():
-        articles = Article.query
-        articles = sorted(articles, key=attrgetter('pub_date'), reverse=True)
-        return render_template('admin/admin.html', posts=articles)
+        return ("You are admin!"
+                "<br> Use buttons under article preview on <a href='/'>main</a> page to edit or delete posts."
+                "<br> Or go to <a href='/new_post'>/new_post</a> page to create new post."
+                "<br> Good luck!")
     return redirect(url_for('login'))
 
 
@@ -62,6 +65,10 @@ def login():
     if request.method == 'GET':
         return render_template('login.html', form=form)
 
+    if not Member.query.filter_by(name="admin").first():
+        admin = Member(name="admin", password="admin")
+        db.session.add(admin)
+        db.session.commit()
     name = request.form['username']
     password = request.form['password']
     admin = Member.query.filter_by(name=name, password=password).first()

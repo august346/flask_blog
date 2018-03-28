@@ -1,3 +1,5 @@
 blog
+flask_session
 __pycache__
+.idea
 *.pyc

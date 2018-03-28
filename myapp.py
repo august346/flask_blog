@@ -16,4 +16,4 @@ from views import *
 
 if __name__ == '__main__':
     db.create_all()
-    app.run('127.0.0.1', 8080)
+    app.run()
