@@ -1,0 +1,17 @@
+Babel==2.5.3
+click==6.7
+Flask==0.12.2
+Flask-Login==0.4.1
+Flask-Session==0.3.1
+Flask-SQLAlchemy==2.3.2
+Flask-SuperAdmin==1.7.1
+Flask-WTF==0.14.2
+itsdangerous==0.24
+Jinja2==2.10
+MarkupSafe==1.0
+pkg-resources==0.0.0
+pytz==2018.3
+redis==2.10.6
+SQLAlchemy==1.2.5
+Werkzeug==0.14.1
+WTForms==2.1
